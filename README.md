@@ -14,12 +14,6 @@
 gradlew --refresh-dependencies
 ```
 
-### Serve
-
-```sh
-gradlew bootRun --args="--spring.profiles.active=$USER"
-```
-
 ## Analyze
 
 ```sh
