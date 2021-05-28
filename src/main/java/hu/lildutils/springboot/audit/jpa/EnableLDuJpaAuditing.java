@@ -1,4 +1,4 @@
-package com.lildutils.springboot.audit;
+package hu.lildutils.springboot.audit.jpa;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -8,13 +8,12 @@ import java.lang.annotation.Target;
 
 import org.springframework.context.annotation.Import;
 
-import com.lildutils.springboot.audit.mongodb.config.LDuMongoAuditConfigurer;
+import hu.lildutils.springboot.audit.jpa.config.LDuJpaAuditingConfig;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@Import(LDuMongoAuditConfigurer.class)
-public @interface EnableLDuMongoAudit
-{
+@Import(LDuJpaAuditingConfig.class)
+public @interface EnableLDuJpaAuditing {
 
 }
