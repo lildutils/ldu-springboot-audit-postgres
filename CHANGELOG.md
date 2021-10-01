@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.1.1 (2021.10.10.)
+
+### Bugfixes
+
+* README markdown file typos
+
 ## 2.1.0 (2021.10.01.)
 
 ## Features
