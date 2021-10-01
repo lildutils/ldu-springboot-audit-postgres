@@ -1,0 +1,70 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'checkstyle'
+}
+
+// project-meta
+
+group = 'hu.lildutils.springboot.audit.mysql'
+
+version = '2.1.0'
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+// dependencies
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+    runtimeOnly 'mysql:mysql-connector-java'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+// analyze
+
+checkstyle {
+    toolVersion '8.43'
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+		xml.required  = false
+		html.required = true
+    }
+}
+
+// test
+
+test {
+	useJUnitPlatform()
+}
+
+// build
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}
+
+task printProjectName {
+    doLast {
+        println project.name
+    }
+}
+
+task printProjectVersion {
+    doLast {
+        println project.version
+    }
+}
