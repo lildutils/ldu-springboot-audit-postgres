@@ -2,7 +2,7 @@
 
 ## About
 
-To get more informations about this library, or if you have any question or suggestion, please send an email to [me](mailto:lildworks@gmail.com)
+To get more informations about this library, or if you have any question or suggestion, please send an email to [me](mailto:lildworks@gmail.com), or visit the [Official website](https://www.lildutils.hu/projects/ldu-springboot/ldu-springboot-audit)
 
 * [Official Gradle documentation](https://docs.gradle.org)
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
@@ -25,7 +25,7 @@ To get more informations about this library, or if you have any question or sugg
 ```properties
 spring.sql.init.mode=always
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.url=jdbc:mysql://host:port/databaseName?useUnicode=yes&characterEncoding=UTF-8
+spring.datasource.url=jdbc:mysql://localhost:3306/databaseName?useUnicode=yes&characterEncoding=UTF-8
 spring.datasource.username=root
 spring.datasource.password=p4ssw0RD!
 
@@ -58,7 +58,7 @@ dependencies {
 ```properties
 spring.sql.init.mode=always
 spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://host:port/databaseName?useUnicode=yes&characterEncoding=UTF-8
+spring.datasource.url=jdbc:postgresql://localhost:5432/databaseName?useUnicode=yes&characterEncoding=UTF-8
 spring.datasource.username=
 spring.datasource.password=
 
@@ -88,8 +88,8 @@ dependencies {
 #### Connection configuration for Mongo Database Server with Spring Data:
 
 ```properties
-spring.data.mongodb.host=
-spring.data.mongodb.port=
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
 spring.data.mongodb.authentication-database=databaseName
 spring.data.mongodb.username=
 spring.data.mongodb.password=
