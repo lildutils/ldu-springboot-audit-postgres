@@ -4,17 +4,24 @@
 
 To get more informations about this library, or if you have any question or suggestion, please send an email to [me](mailto:lildworks@gmail.com), or visit the [Official website](https://www.lildutils.hu/projects/ldu-springboot/ldu-springboot-audit)
 
+### Reference Documentation
+
 * [Official Gradle documentation](https://docs.gradle.org)
+* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.5/gradle-plugin/reference/html/)
+* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.5/gradle-plugin/reference/html/#build-image)
+
+### Additional Links
+
+These additional references should also help:
+
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.2/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.2/gradle-plugin/reference/html/#build-image)
 
-## Prerequisites
+### Prerequisites
 
-* [Git](https://git-scm.com/download) - ^2.20.1
-* [Gradle](https://gradle.org/releases/) - ^7.1.1
-* [AdoptOpenJDK](https://adoptopenjdk.net/index.html) - ^JDK11
-* [SpringBoot](https://start.spring.io) - ^2.4.5
+* [Git](https://git-scm.com/download) - ^2.25.1
+* [Gradle](https://gradle.org/releases/) - ^7.2
+* [AdoptOpenJDK](https://adoptopenjdk.net/index.html) - ^openjdk-11-jdk
+* [SpringBoot](https://spring.io) - ^2.5.5
 
 ## Projects
 
@@ -47,7 +54,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-    runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'mysql:mysql-connector-java'
 }
 ```
 
