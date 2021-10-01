@@ -1,7 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 ### Gradle ###
-/gradle/
 .gradle
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -42,7 +41,7 @@ out/
 .vscode/*
 .history/*
 
-### LilDutils ###
+### DEV-INF ###
 build/
 DEV-INF/
 dist/
@@ -50,6 +49,3 @@ logs/
 tmp/
 zip/
 configs.dev-inf.json
-.ldt
-.ldt.bat
-.ldt.sh
