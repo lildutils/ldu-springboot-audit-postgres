@@ -1,0 +1,93 @@
+plugins {
+  id 'org.springframework.boot' version '2.7.1'
+  id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id 'org.asciidoctor.convert' version '1.5.8'
+  id 'java'
+  id 'org.sonarqube' version '3.3'
+  id 'checkstyle'
+  id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.73.0'
+}
+
+group = 'hu.lildutils.springboot.audit.postgres'
+version = '2.4.0-SNAPSHOT'
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+jar { enabled = true }
+bootJarMainClassName { enabled = false }
+bootJar { enabled = false }
+
+configurations {
+  jaxDoclet
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation      'org.springframework.boot:spring-boot-starter'
+  implementation      'org.springframework.boot:spring-boot-starter-security'
+  implementation      'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation      'org.springframework.boot:spring-boot-starter-data-jdbc'
+  testImplementation  'org.springframework.boot:spring-boot-starter-test'
+  runtimeOnly         'org.postgresql:postgresql'
+}
+
+checkstyle {
+  configDirectory = file("$rootProject.projectDir/config/checkstyle/")
+  configFile      = file("$rootProject.projectDir/config/checkstyle/checkstyle.xml")
+}
+
+tasks.withType(Checkstyle) {
+  reports {
+    xml.required      = false
+    html.required     = true
+    html.destination  file("$rootProject.projectDir/docs/latest/html/reports/checkstyle/index.html")
+  }
+}
+
+task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+  fromRepo        = file(".");
+  toRef           = "$project.version";
+  file            = file("$rootProject.projectDir/CHANGELOG.md");
+  templateContent = file("$rootProject.projectDir/config/changelog/changelog.mustache").getText('UTF-8');
+  ignoreCommitsIfMessageMatches = ".*((DEBUG:)|(debug:)|(REL:)|(rel:)|(RELEASE:)|(release:)|(CHANGELOG:)|(changelog:)|(CHORE:)|(chore:)|(IMPR:)|(impr:)|(Merge tag)|(Merge branch)).*";
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectName"      , "$System.env.SONAR_PROJECT_NAME"
+    property "sonar.projectKey"       , "$System.env.SONAR_PROJECT_KEY"
+    property "sonar.qualitygate.wait" ,  true
+  }
+}
+
+javadoc {
+  destinationDir = file("$rootProject.projectDir/docs/latest/html/lib/")
+}
+
+test {
+  outputs.dir file('build/generated-snippets')
+  useJUnitPlatform()
+  reports.junitXml.required = false
+  reports.html.required     = true
+  reports.html.destination  = file("$rootProject.projectDir/docs/latest/html/reports/test/")
+}
+
+asciidoctor {
+  inputs.dir file('build/generated-snippets')
+  dependsOn test
+}
+
+task printProjectName {
+  doLast {
+    println project.name
+  }
+}
+
+task printProjectVersion {
+  doLast {
+    println project.version
+  }
+}

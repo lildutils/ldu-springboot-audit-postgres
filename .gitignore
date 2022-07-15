@@ -38,14 +38,21 @@ out/
 /.nb-gradle/
 
 ### VS Code ###
-.vscode/*
 .history/*
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
 
 ### DEV-INF ###
 build/
 DEV-INF/
 dist/
+docs/
 logs/
 tmp/
 zip/
+.backup/
+**/.env
+.env
+.env.backup
 configs.dev-inf.json
