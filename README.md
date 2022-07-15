@@ -37,7 +37,7 @@ dependencies {
 ### Configurations
 
 ```properties
-##Connection configurations for Postgres Database Server with Spring Data & JPA:
+## Connection configurations for Postgres Database Server with Spring Data & JPA:
 spring.sql.init.mode=always
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.datasource.url=jdbc:postgresql://localhost:5432/databaseName?useUnicode=yes&characterEncoding=UTF-8
@@ -62,6 +62,8 @@ spring.jpa.show-sql=false
 * [AdoptOpenJDK](https://adoptopenjdk.net/index.html) - openjdk version "17.0.3" 2022-04-19
 * [Gradle](https://gradle.org/releases/) - Gradle 7.4.1
 * [SpringBoot](https://spring.io/projects/spring-boot) - SpringBoot 2.7.1
+
+### Code Analyze
 
 ```sh
 ./gradlew check -x test -x build --refresh-dependencies --warning-mode all
@@ -134,16 +136,16 @@ task changelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
   toRef           = "$project.version";
   file            = file("$rootProject.projectDir/CHANGELOG.md");
   templateContent = file("$rootProject.projectDir/config/changelog/changelog.mustache").getText('UTF-8');
-
-  /* This will ignore the following commit messages if it starts with: */
-  // - DEBUG: or debug:
-  // - REL: or rel:
-  // - RELEASE: or release:
-  // - CHANGELOG: or changelog:
-  // - CHORE: or chore:
-  // - IMPR: or impr:
-  // - Merge tag
-  // - Merge branch
+  /**
+   * This will ignore the following commit messages if it starts with:
+   * - DEBUG: or debug:
+   * - REL: or rel: or RELEASE: or release:
+   * - CHANGELOG: or changelog:
+   * - CHORE: or chore:
+   * - IMPR: or impr:
+   * - Merge tag
+   * - Merge branch
+   */
   ignoreCommitsIfMessageMatches = ".*((DEBUG:)|(debug:)|(REL:)|(rel:)|(RELEASE:)|(release:)|(CHANGELOG:)|(changelog:)|(CHORE:)|(chore:)|(IMPR:)|(impr:)|(Merge tag)|(Merge branch)).*";
 }
 ```
